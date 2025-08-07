@@ -1,0 +1,17 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AJsonConverter_00601_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2025_002E1_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003Fe580097862614e859942198d732b406216d400_003F6d_003F9d149c17_003FJsonConverter_00601_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AProcess_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2025_002E1_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003F38c3caa84ad64d73b2d79ae3bb98b2733f200_003F89_003F50a18873_003FProcess_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ASafeFileHandle_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2025_002E1_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003F4dc5d2f96678478cb8386b88493a3620d19e00_003F2e_003F2d5272ea_003FSafeFileHandle_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AStandardAssetLoader_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2025_002E1_003Fresharper_002Dhost_003FSourcesCache_003F1579bf835158dd6aec6bad778df36f37e1ed9bdaa7c2b533f598f5c59bd4_003FStandardAssetLoader_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
+  &lt;Assembly Path="/home/alexander/RiderProjects/AppImageLauncher/AppImageLauncher/bin/Debug/net9.0/LiteDB.dll" /&gt;
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:Boolean x:Key="/Default/Monitoring/Counters/=Microsoft_002DAspNetCore_002DServer_002DKestrel/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Monitoring/Counters/=Microsoft_002EAspNetCore_002EHosting/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Monitoring/Counters/=Microsoft_002EAspNetCore_002EHttp_002EConnections/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Monitoring/Counters/=Microsoft_002EEntityFrameworkCore/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Monitoring/Counters/=System_002ENet_002EHttp/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Monitoring/Counters/=System_002ENet_002ENameResolution/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Monitoring/Counters/=System_002ENet_002ESecurity/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Monitoring/Counters/=System_002ENet_002ESockets/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Monitoring/Counters/=System_002ERuntime/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

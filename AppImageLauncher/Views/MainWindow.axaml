@@ -1,0 +1,207 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AppImageLauncher.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controller="clr-namespace:AppImageLauncher.Controller"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AppImageLauncher.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="../Assets/avalonia-logo.ico"
+        Title="AppImageLauncher">
+    <Window.Resources>
+        <controller:ImageConverter x:Key="ImageConverter" />
+        <controller:AppStateToBrushConverter x:Key="StateBrushConverter"/>
+    </Window.Resources>
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    <Grid HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ToolTip Tip="Use the right mouse button for Menu, to add new apps, edit or delete Apps"
+                 Grid.Column="0"
+                 Grid.Row="0"
+                 Width="50"
+                 BorderThickness="0">
+            <Image Width="30"
+                   Height="30">
+                <SvgImage Source="../Assets/Icons/help.svg"></SvgImage>
+            </Image>
+        </ToolTip>
+        <!--<Menu Grid.Column="0" 
+              Grid.Row="0"
+              Grid.ColumnSpan="2"
+              Height="40"
+              FontSize="16">
+            <Menu.Styles>
+                <Style Selector="MenuItem">
+                    <Setter Property="Height"
+                            Value="30"></Setter>
+                    <Setter Property="VerticalAlignment"
+                            Value="Center"></Setter>
+                </Style>
+            </Menu.Styles>
+            <MenuItem Header="Applications">
+                <MenuItem Header="New"
+                          Click="OpenNewApp"></MenuItem>
+                <MenuItem Header="Edit"></MenuItem>
+            </MenuItem>
+        </Menu>-->
+        <DockPanel Grid.Column="2" 
+                   Grid.Row="0" 
+                   Dock="Right"
+                   HorizontalAlignment="Center"
+                   x:Name="ThemeSwitch">
+            <DockPanel 
+                Width="50"
+                HorizontalAlignment="Center">
+                <Image Width="20"
+                       Height="20"
+                       x:Name="Sun"
+                       IsVisible="False"
+                       Margin="0,0,15,0">
+                    <SvgImage Source="../Assets/Icons/sun.svg"></SvgImage>
+                </Image>
+            </DockPanel>
+            <StackPanel 
+                Orientation="Horizontal"
+                HorizontalAlignment="Center">
+                <ToggleSwitch Click="SwitchTheme"
+                              x:Name="ThemeToggleButton"
+                              OnContent=""
+                              OffContent=""
+                              IsChecked="{Binding ToggleButtonChecked, Mode=TwoWay}"></ToggleSwitch>
+            </StackPanel>
+            <DockPanel 
+                Width="40"
+                HorizontalAlignment="Center">
+                <Image Width="20"
+                       Height="20"
+                       x:Name="Moon"
+                       IsVisible="False">
+                    <SvgImage Source="../Assets/Icons/moon.svg"></SvgImage>
+                </Image>
+            </DockPanel>
+        </DockPanel>
+        <ListBox Grid.Column="0"
+                 Grid.Row="1" 
+                 BorderBrush="Silver"
+                 BorderThickness="1"
+                 Margin="5,0,5,5"
+                 DataContext="{Binding ConfigFileContent, Mode=TwoWay}"
+                 ItemsSource="{Binding Categories, Mode=TwoWay}"
+                 HorizontalAlignment="Stretch"
+                 SelectionMode="Multiple"
+                 SelectionChanged="SetCategorySelection">
+            <ListBox.Styles>
+                <Style Selector="ListBoxItem">
+                    <Setter Property="Padding"
+                            Value="10"></Setter>
+                    <Setter Property="Background"
+                            Value="#E96920"></Setter>
+                    <Setter Property="BorderThickness"
+                            Value="1"></Setter>
+                </Style>
+            </ListBox.Styles>
+        </ListBox>
+        <Border Grid.Column="1"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                BorderBrush="Silver"
+                BorderThickness="1"
+                Margin="5,0,5,5">
+            <ScrollViewer>
+                <ScrollViewer.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Add New App"
+                                  Click="OpenNewApp"/>
+                    </ContextMenu>
+                </ScrollViewer.ContextMenu> 
+                <ItemsControl ItemsSource="{Binding ApplicationOverview, Mode=TwoWay}"
+                              x:Name="AppsOverview">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Left"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                         <DataTemplate>
+                            <Button BorderBrush="Silver"
+                                    BorderThickness="1"
+                                    Margin="5"
+                                    ToolTip.Tip="DEINE MUDDER"
+                                    Height="220"
+                                    Width="150" 
+                                    Cursor="Hand"
+                                    Click="StartApplication"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalAlignment="Stretch"
+                                    VerticalContentAlignment="Bottom">
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Add New App"
+                                                  Click="OpenNewApp"/>
+                                        <MenuItem Header="Edit"
+                                                  Click="OpenEditApp"/>
+                                        <MenuItem Header="Delete"/>
+                                    </ContextMenu>
+                                </Button.ContextMenu> 
+                                <StackPanel x:Name="AppImageContainer"
+                                            Orientation="Vertical"
+                                            HorizontalAlignment="Center">
+                                    <StackPanel.Styles>
+                                        <Style Selector="Image">
+                                            <Setter Property="HorizontalAlignment"
+                                                    Value="Center"></Setter>
+                                            <Setter Property="Margin"
+                                                    Value="0,0,0,15"></Setter>
+                                            <Setter Property="Height"
+                                                    Value="120"></Setter>
+                                        </Style>
+                                    </StackPanel.Styles>
+                                    <Image Source="{Binding IconPath, Converter={StaticResource ImageConverter}}" />
+                                    <Border 
+                                            BorderBrush="{Binding State, Converter={StaticResource StateBrushConverter}}"
+                                            BorderThickness="0,3,0,0"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Height="40"
+                                            Margin="30,0,30,0"
+                                            x:Name="AppStatus">
+                                        <ToolTip 
+                                                 Width="150"
+                                                 Margin="0,5,0,0"
+                                                 VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center">
+                                            <TextBlock Text="{Binding Name}"
+                                                       TextAlignment="Center"></TextBlock>
+                                        </ToolTip>
+                                    </Border>
+                                    <ToolTip>
+                                        <DockPanel>
+                                            <TextBlock Text="Runtime: "></TextBlock>
+                                            <TextBlock Text="{Binding RunTimeFormatted}"
+                                                       TextAlignment="Center"></TextBlock>
+                                        </DockPanel>
+                                    </ToolTip>
+                                </StackPanel>
+                            </Button>
+                         </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>
